@@ -33,7 +33,7 @@ function App() {
     }
   }).then(res => {
     if (res.status == 204) {
-      setSong("Not Playing")
+      setSong("not playing")
       setSongLink("#")
     } else if (res.status == 401) {
       console.log("here")
@@ -53,7 +53,7 @@ function App() {
     } else {
       res.json().then(data => {
         if (data.currently_playing_type == "ad") {
-          setSong("Advertisement")
+          setSong("stupid advertisement")
           setSongLink("#")
         } else {
           let artists = []
