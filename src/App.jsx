@@ -1,19 +1,55 @@
 import { useState } from "react"
+import { Deta } from "deta";
 
 function App() {
-  const [song, setSong] = useState("");
+  const [song, setSong] = useState("not playing");
   const [songLink, setSongLink] = useState("#");
+  const [access, setAccess] = useState("")
+  const [refresh, setRefresh] = useState("")
+  const [cid, setCid] = useState("")
+  const [secret, setSecret] = useState("")
 
-  fetch("	https://api.spotify.com/v1/me/player/currently-playing", {
+  const deta = Deta(import.meta.env.VITE_DETA_KEY)
+  const base = deta.Base("portfolio")
+
+  base.get("access").then(data => {
+    setAccess(data.token);
+  })
+  base.get("refresh").then(data => {
+    setRefresh(data.token);
+  })
+  base.get("clientid").then(data => {
+    setCid(data.token);
+  })
+  base.get("clientsecret").then(data => {
+    setSecret(data.token);
+  })
+
+  fetch("https://api.spotify.com/v1/me/player/currently-playing", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": "Bearer "+import.meta.env.VITE_SPOTIFY_TOKEN
+      "Authorization": "Bearer "+access
     }
   }).then(res => {
     if (res.status == 204) {
-      setSong("Not Playing.")
+      setSong("Not Playing")
       setSongLink("#")
+    } else if (res.status == 401) {
+      console.log("here")
+      fetch("https://accounts.spotify.com/api/token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: "Basic "+btoa(cid+":"+secret).toString()
+        },
+        body: "grant_type=refresh_token&refresh_token="+refresh
+      }).then(res => res.json().then( data => {
+        setAccess(data.access_token)
+        base.put({"token": data.access_token}, "access").then(data => {
+          console.log("edited access token")
+        })
+      }))
     } else {
       res.json().then(data => {
         if (data.currently_playing_type == "ad") {
