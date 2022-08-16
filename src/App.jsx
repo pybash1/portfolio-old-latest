@@ -1,9 +1,43 @@
+import { useState } from "react"
+
 function App() {
+  const [song, setSong] = useState("");
+  const [songLink, setSongLink] = useState("#");
+
+  fetch("	https://api.spotify.com/v1/me/player/currently-playing", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer "+import.meta.env.VITE_SPOTIFY_TOKEN
+    }
+  }).then(res => {
+    if (res.status == 204) {
+      setSong("Not Playing.")
+      setSongLink("#")
+    } else {
+      res.json().then(data => {
+        if (data.currently_playing_type == "ad") {
+          setSong("Advertisement")
+          setSongLink("#")
+        } else {
+          let artists = []
+          data.item.album.artists.forEach((elem) => {
+            artists.push(elem.name)
+          })
+          let artistStr = artists.join(", ")
+          console.log(artistStr)
+          setSong(data.item.album.name+" - "+artistStr)
+          setSongLink(data.item.album.external_urls.spotify)
+        }
+      })
+    }
+  })
+
   return (
     <div className="min-h-screen font-inter p-32 bg-gradient-to-r from-blue-500 to-cyan-300 flex items-center justify-center">
       <div className="bg-white px-44 pt-20 pb-10 rounded-3xl bg-opacity-25 shadow-2xl drop-shadow-2xl backdrop-blur-3xl scroll-smooth">
         <div className="grid grid-cols-5 gap-20">
-          <div className="col-span-1 border-r border-gray-300 pr-12 border-opacity-40">
+          <div className="col-span-1">
             <ul>
               <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
                 <a href="#projects" className="scroll-smooth">Projects</a>
@@ -13,6 +47,9 @@ function App() {
               </li>
               <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
                 <a href="#contact" className="scroll-smooth">Contact</a>
+              </li>
+              <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
+                <a href="#music" className="scroll-smooth">Music</a>
               </li>
               <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
                 <a href="https://pybash.substack.com" className="scroll-smooth">Newsletter</a>
@@ -267,6 +304,21 @@ function App() {
             >
               discord
             </a>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h3
+              id="music"
+              className="font-extrabold text-6xl drop-shadow-2xl"
+            >
+              music
+            </h3>
+            <br />
+            <h2 className="font-normal text-3xl drop-shadow-2xl">
+              i am crrently listening to <a className="hover:text-white transition-all ease-in-out duration-1000" href={songLink}>{song}</a>
+            </h2>
           </div>
         </div>
         <div className="border-t-2 border-gray-300 border-opacity-40 w-full mt-10 p-12">
