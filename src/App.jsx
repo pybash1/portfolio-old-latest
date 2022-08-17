@@ -61,8 +61,7 @@ function App() {
             artists.push(elem.name)
           })
           let artistStr = artists.join(", ")
-          console.log(artistStr)
-          setSong(data.item.album.name+" - "+artistStr)
+          setSong(data.item.name+" - "+artistStr)
           setSongLink(data.item.album.external_urls.spotify)
         }
       })
@@ -307,6 +306,23 @@ function App() {
             </h2>
             <br />
             <br />
+            <br />
+            <br />
+            <br />
+            <h3 id="now" className="font-extrabold text-6xl drop-shadow-2xl">
+              skills
+            </h3>
+            <br />
+            <h2 className="font-normal text-3xl drop-shadow-2xl">
+              <ul className="list-disc ml-8">
+                <li className="py-2">python</li>
+                <li className="py-2">javascript</li>
+                <li className="py-2">react/next.js</li>
+                <li className="py-2">tailwindcss</li>
+                <li className="py-2">solidity(learning)</li>
+                <li className="py-2">sql</li>
+              </ul>
+            </h2>
             <br />
             <br />
             <br />
