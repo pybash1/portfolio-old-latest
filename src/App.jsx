@@ -352,7 +352,10 @@ function App() {
             <br />
             <br />
             <br />
-            <h3 id="previous" className="font-extrabold text-6xl drop-shadow-2xl">
+            <h3
+              id="previous"
+              className="font-extrabold text-6xl drop-shadow-2xl"
+            >
               previous
             </h3>
             <br />
@@ -434,18 +437,19 @@ function App() {
             <br />
             <h2 className="font-normal text-3xl drop-shadow-2xl">
               i am{" "}
-              {vsc
-                ? "editing " +
-                  vsc?.details.split(" ")[1] +
+              {vsc?.details == "Idling"
+                ? "thinking right now"
+                : (vsc
+                ? vsc?.details +
                   " in the " +
-                  vsc?.state.split(" ")[2] +
+                  vsc?.state.split(" ")[1] +
                   " workspace for the last " +
                   (Math.floor(
                     Math.abs(rn - vsc?.timestamps?.start) / 1000 / 3600
                   ) %
                     24) +
                   " hours"
-                : "not coding right now"}
+                : "not coding right now")}
             </h2>
             <br />
             <br />
