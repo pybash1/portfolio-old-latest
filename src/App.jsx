@@ -1,72 +1,96 @@
-import { useState } from "react"
+import { useState } from "react";
 import { Deta } from "deta";
+import { useEffect } from "react";
 
 function App() {
-  const [song, setSong] = useState("not playing");
-  const [songLink, setSongLink] = useState("#");
-  const [access, setAccess] = useState("")
-  const [refresh, setRefresh] = useState("")
-  const [cid, setCid] = useState("")
-  const [secret, setSecret] = useState("")
+  // const [song, setSong] = useState("not playing");
+  // const [songLink, setSongLink] = useState("#");
+  // const [access, setAccess] = useState("")
+  // const [refresh, setRefresh] = useState("")
+  // const [cid, setCid] = useState("")
+  // const [secret, setSecret] = useState("")
+  const [lanyard, setLanyard] = useState({});
+  const [spotify, setSpotify] = useState(undefined);
+  const [vsc, setVsc] = useState(undefined);
+  const [rn, setRn] = useState(undefined);
 
-  const deta = Deta(import.meta.env.VITE_DETA_KEY)
-  const base = deta.Base("portfolio")
-
-  base.get("access").then(data => {
-    setAccess(data.token);
-  })
-  base.get("refresh").then(data => {
-    setRefresh(data.token);
-  })
-  base.get("clientid").then(data => {
-    setCid(data.token);
-  })
-  base.get("clientsecret").then(data => {
-    setSecret(data.token);
-  })
-
-  fetch("https://api.spotify.com/v1/me/player/currently-playing", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer "+access
-    }
-  }).then(res => {
-    if (res.status == 204) {
-      setSong("not playing")
-      setSongLink("#")
-    } else if (res.status == 401) {
-      console.log("here")
-      fetch("https://accounts.spotify.com/api/token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Authorization: "Basic "+btoa(cid+":"+secret).toString()
-        },
-        body: "grant_type=refresh_token&refresh_token="+refresh
-      }).then(res => res.json().then( data => {
-        setAccess(data.access_token)
-        base.put({"token": data.access_token}, "access").then(data => {
-          console.log("edited access token")
-        })
-      }))
-    } else {
-      res.json().then(data => {
-        if (data.currently_playing_type == "ad") {
-          setSong("stupid advertisement")
-          setSongLink("#")
-        } else {
-          let artists = []
-          data.item.album.artists.forEach((elem) => {
-            artists.push(elem.name)
-          })
-          let artistStr = artists.join(", ")
-          setSong(data.item.name+" - "+artistStr)
-          setSongLink(data.item.album.external_urls.spotify)
+  useEffect(() => {
+    fetch("https://api.lanyard.rest/v1/users/626461325744275464", {
+      method: "GET",
+    }).then((res) =>
+      res.json().then((data) => {
+        setLanyard(data);
+        if (data.data.spotify) {
+          setSpotify(data.data.spotify);
         }
+        data.data.activities.forEach((activity, ind) => {
+          if (activity.application_id == "383226320970055681") {
+            setVsc(data.data.activities[ind]);
+          }
+        });
       })
-    }
-  })
+    );
+    setRn(Date.now());
+  });
+
+  // const deta = Deta(import.meta.env.VITE_DETA_KEY)
+  // const base = deta.Base("portfolio")
+
+  // base.get("access").then(data => {
+  //   setAccess(data.token);
+  // })
+  // base.get("refresh").then(data => {
+  //   setRefresh(data.token);
+  // })
+  // base.get("clientid").then(data => {
+  //   setCid(data.token);
+  // })
+  // base.get("clientsecret").then(data => {
+  //   setSecret(data.token);
+  // })
+
+  // fetch("https://api.spotify.com/v1/me/player/currently-playing", {
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     "Authorization": "Bearer "+access
+  //   }
+  // }).then(res => {
+  //   if (res.status == 204) {
+  //     setSong("not playing")
+  //     setSongLink("#")
+  //   } else if (res.status == 401) {
+  //     console.log("here")
+  //     fetch("https://accounts.spotify.com/api/token", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/x-www-form-urlencoded",
+  //         Authorization: "Basic "+btoa(cid+":"+secret).toString()
+  //       },
+  //       body: "grant_type=refresh_token&refresh_token="+refresh
+  //     }).then(res => res.json().then( data => {
+  //       setAccess(data.access_token)
+  //       base.put({"token": data.access_token}, "access").then(data => {
+  //         console.log("edited access token")
+  //       })
+  //     }))
+  //   } else {
+  //     res.json().then(data => {
+  //       if (data.currently_playing_type == "ad") {
+  //         setSong("stupid advertisement")
+  //         setSongLink("#")
+  //       } else {
+  //         let artists = []
+  //         data.item.album.artists.forEach((elem) => {
+  //           artists.push(elem.name)
+  //         })
+  //         let artistStr = artists.join(", ")
+  //         setSong(data.item.name+" - "+artistStr)
+  //         setSongLink(data.item.album.external_urls.spotify)
+  //       }
+  //     })
+  //   }
+  // })
 
   return (
     <div className="min-h-screen font-inter p-32 bg-gradient-to-r from-blue-500 to-cyan-300 flex items-center justify-center">
@@ -75,19 +99,44 @@ function App() {
           <div className="col-span-1">
             <ul>
               <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
-                <a href="#projects" className="scroll-smooth">Projects</a>
+                <a href="#projects" className="scroll-smooth">
+                  projects
+                </a>
               </li>
               <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
-                <a href="#now" className="scroll-smooth">Now</a>
+                <a href="#now" className="scroll-smooth">
+                  now
+                </a>
               </li>
               <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
-                <a href="#contact" className="scroll-smooth">Contact</a>
+                <a href="#previous" className="scroll-smooth">
+                  previous
+                </a>
               </li>
               <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
-                <a href="#music" className="scroll-smooth">Music</a>
+                <a href="#skills" className="scroll-smooth">
+                  skills
+                </a>
               </li>
               <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
-                <a href="https://pybash.substack.com" className="scroll-smooth">Newsletter</a>
+                <a href="#contact" className="scroll-smooth">
+                  contact
+                </a>
+              </li>
+              <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
+                <a href="#vsc" className="scroll-smooth">
+                  vsc
+                </a>
+              </li>
+              <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
+                <a href="#music" className="scroll-smooth">
+                  music
+                </a>
+              </li>
+              <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
+                <a href="https://pybash.substack.com" className="scroll-smooth">
+                  newsletter
+                </a>
               </li>
             </ul>
           </div>
@@ -285,11 +334,11 @@ function App() {
             </h3>
             <br />
             <h3 className="font-extrabold text-6xl drop-shadow-2xl">
-              i am working on authdeck and learnist.
+              i am working on authdeck and cesta.
             </h3>
             <br />
             <h2 className="font-normal text-3xl drop-shadow-2xl">
-              right now I am focused on learnist and also shipping{" "}
+              right now I am focused on cesta and also shipping{" "}
               <a
                 href="https://authdeck.xyz"
                 className="font-normal hover:text-white transition-all ease-in-out duration-1000"
@@ -300,16 +349,23 @@ function App() {
             </h2>
             <br />
             <br />
+            <br />
+            <br />
+            <br />
+            <h3 id="previous" className="font-extrabold text-6xl drop-shadow-2xl">
+              previous
+            </h3>
+            <br />
             <h2 className="font-normal text-3xl drop-shadow-2xl">
-              Although, I am going to start working on another side project
-              soon. And I plan to being consistent with my blog too.
+              i have put aside learnist for now but i hope to work on it after
+              completing cesta.
             </h2>
             <br />
             <br />
             <br />
             <br />
             <br />
-            <h3 id="now" className="font-extrabold text-6xl drop-shadow-2xl">
+            <h3 id="skills" className="font-extrabold text-6xl drop-shadow-2xl">
               skills
             </h3>
             <br />
@@ -341,6 +397,17 @@ function App() {
               you can contact me easily on twitter and on discord
             </h2>
             <br />
+            <h2 className="font-normal text-3xl drop-shadow-2xl">
+              right now, i am{" "}
+              {lanyard?.data?.active_on_discord_web
+                ? "online on discord web"
+                : lanyard?.data?.active_on_discord_mobile
+                ? "online on discord mobile"
+                : lanyard?.data?.active_on_discord_desktop
+                ? "online on discord"
+                : "offline on discord"}
+            </h2>
+            <br />
             <br />
             <a
               href="https://twitter.com/py_bash1"
@@ -361,15 +428,42 @@ function App() {
             <br />
             <br />
             <br />
-            <h3
-              id="music"
-              className="font-extrabold text-6xl drop-shadow-2xl"
-            >
+            <h3 id="vsc" className="font-extrabold text-6xl drop-shadow-2xl">
+              vsc
+            </h3>
+            <br />
+            <h2 className="font-normal text-3xl drop-shadow-2xl">
+              i am{" "}
+              {vsc
+                ? "editing " +
+                  vsc?.details.split(" ")[1] +
+                  " in the " +
+                  vsc?.state.split(" ")[2] +
+                  " workspace for the last " +
+                  (Math.floor(
+                    Math.abs(rn - vsc?.timestamps?.start) / 1000 / 3600
+                  ) %
+                    24) +
+                  " hours"
+                : "not coding right now"}
+            </h2>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h3 id="music" className="font-extrabold text-6xl drop-shadow-2xl">
               music
             </h3>
             <br />
             <h2 className="font-normal text-3xl drop-shadow-2xl">
-              i am crrently listening to <a className="hover:text-white transition-all ease-in-out duration-1000" href={songLink}>{song}</a>
+              i am{" "}
+              {spotify
+                ? "currently listening to " +
+                  spotify?.song +
+                  " by " +
+                  spotify?.artist
+                : "not listening to music"}
             </h2>
           </div>
         </div>
