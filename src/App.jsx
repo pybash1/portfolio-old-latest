@@ -439,7 +439,7 @@ function App() {
               i am{" "}
               {vsc?.details == "Idling"
                 ? "thinking right now"
-                : (vsc
+                : vsc
                 ? vsc?.details +
                   " in the " +
                   vsc?.state.split(" ")[1] +
@@ -447,9 +447,15 @@ function App() {
                   (Math.floor(
                     Math.abs(rn - vsc?.timestamps?.start) / 1000 / 3600
                   ) %
-                    24) +
-                  " hours"
-                : "not coding right now")}
+                    24 <=
+                  0
+                    ? (Math.floor(
+                        Math.abs(rn - vsc?.timestamps?.start) / 1000 / 60
+                      ) % 24) + " minutes"
+                    : (Math.floor(
+                        Math.abs(rn - vsc?.timestamps?.start) / 1000 / 3600
+                      ) % 24) + " hours")
+                : "not coding right now"}
             </h2>
             <br />
             <br />
