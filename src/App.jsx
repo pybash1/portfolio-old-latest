@@ -1,14 +1,7 @@
 import { useState } from "react";
-import { Deta } from "deta";
 import { useEffect } from "react";
 
 function App() {
-  // const [song, setSong] = useState("not playing");
-  // const [songLink, setSongLink] = useState("#");
-  // const [access, setAccess] = useState("")
-  // const [refresh, setRefresh] = useState("")
-  // const [cid, setCid] = useState("")
-  // const [secret, setSecret] = useState("")
   const [lanyard, setLanyard] = useState({});
   const [spotify, setSpotify] = useState(undefined);
   const [vsc, setVsc] = useState(undefined);
@@ -32,65 +25,6 @@ function App() {
     );
     setRn(Date.now());
   });
-
-  // const deta = Deta(import.meta.env.VITE_DETA_KEY)
-  // const base = deta.Base("portfolio")
-
-  // base.get("access").then(data => {
-  //   setAccess(data.token);
-  // })
-  // base.get("refresh").then(data => {
-  //   setRefresh(data.token);
-  // })
-  // base.get("clientid").then(data => {
-  //   setCid(data.token);
-  // })
-  // base.get("clientsecret").then(data => {
-  //   setSecret(data.token);
-  // })
-
-  // fetch("https://api.spotify.com/v1/me/player/currently-playing", {
-  //   method: "GET",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     "Authorization": "Bearer "+access
-  //   }
-  // }).then(res => {
-  //   if (res.status == 204) {
-  //     setSong("not playing")
-  //     setSongLink("#")
-  //   } else if (res.status == 401) {
-  //     console.log("here")
-  //     fetch("https://accounts.spotify.com/api/token", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/x-www-form-urlencoded",
-  //         Authorization: "Basic "+btoa(cid+":"+secret).toString()
-  //       },
-  //       body: "grant_type=refresh_token&refresh_token="+refresh
-  //     }).then(res => res.json().then( data => {
-  //       setAccess(data.access_token)
-  //       base.put({"token": data.access_token}, "access").then(data => {
-  //         console.log("edited access token")
-  //       })
-  //     }))
-  //   } else {
-  //     res.json().then(data => {
-  //       if (data.currently_playing_type == "ad") {
-  //         setSong("stupid advertisement")
-  //         setSongLink("#")
-  //       } else {
-  //         let artists = []
-  //         data.item.album.artists.forEach((elem) => {
-  //           artists.push(elem.name)
-  //         })
-  //         let artistStr = artists.join(", ")
-  //         setSong(data.item.name+" - "+artistStr)
-  //         setSongLink(data.item.album.external_urls.spotify)
-  //       }
-  //     })
-  //   }
-  // })
 
   return (
     <div className="min-h-screen font-inter p-32 bg-gradient-to-r from-blue-500 to-cyan-300 flex items-center justify-center">
@@ -134,8 +68,8 @@ function App() {
                 </a>
               </li>
               <li className="font-normal text-xl hover:text-white transition-all ease-in-out duration-1000 py-5">
-                <a href="https://pybash.substack.com" className="scroll-smooth">
-                  newsletter
+                <a href="https://blog.pybash.xyz" className="scroll-smooth">
+                  blog
                 </a>
               </li>
             </ul>
@@ -169,7 +103,7 @@ function App() {
             <br />
             <h2 className="font-normal text-3xl drop-shadow-2xl">
               BeFit is a fitness tracker for the modern era. From nudging you to
-              get fit to loggin your activities, and analysing them. BeFit does
+              get fit to logging your activities, and analysing them. BeFit does
               it all.
             </h2>
             <br />
@@ -451,10 +385,14 @@ function App() {
                   0
                     ? (Math.floor(
                         Math.abs(rn - vsc?.timestamps?.start) / 1000 / 60
-                      ) % 24) + " minutes"
+                      ) %
+                        24) +
+                      " minutes"
                     : (Math.floor(
                         Math.abs(rn - vsc?.timestamps?.start) / 1000 / 3600
-                      ) % 24) + " hours")
+                      ) %
+                        24) +
+                      " hours")
                 : "not coding right now"}
             </h2>
             <br />
