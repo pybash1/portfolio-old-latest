@@ -99,6 +99,45 @@ function App() {
             <br />
             <br />
             <br />
+            <h3 className="font-extrabold text-6xl drop-shadow-2xl">cesta</h3>
+            <br />
+            <h2 className="font-normal text-3xl drop-shadow-2xl">
+              Cesta is an all in one platform where passionate and curious
+              people can find roadmaps and resources to learn just about
+              anything!
+            </h2>
+            <br />
+            <button
+              onClick={() => (window.location.href = "https://cesta.wiki")}
+              className="bg-white rounded-full p-3"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className=""
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path>
+                <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path>
+                <line x1="16" y1="21" x2="16" y2="19"></line>
+                <line x1="19" y1="16" x2="21" y2="16"></line>
+                <line x1="3" y1="8" x2="5" y2="8"></line>
+                <line x1="8" y1="3" x2="8" y2="5"></line>
+              </svg>
+            </button>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <h3 className="font-extrabold text-6xl drop-shadow-2xl">befit</h3>
             <br />
             <h2 className="font-normal text-3xl drop-shadow-2xl">
