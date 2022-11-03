@@ -10,7 +10,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "inter": ["Inter", ...defaultTheme.fontFamily.sans]
+        "poppins": ["Poppins", ...defaultTheme.fontFamily.sans],
+        "roboto": ["'Roboto Mono'", ...defaultTheme.fontFamily.sans]
       }
     },
   },
