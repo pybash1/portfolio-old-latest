@@ -71,7 +71,10 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen font-poppins bg-[#1a191d] text-white group/body" id="home">
+    <div
+      className="min-h-screen font-poppins bg-[#1a191d] text-white group/body"
+      id="home"
+    >
       {/* <div
         id="trailer"
         className="bg-[#66d9ed] rounded-full p-3 fixed z-[999] pointer-events-none opacity-0 transition ease-in-out group/body-hover:opacity-100"
@@ -172,7 +175,10 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="text-center font-semibold text-6xl pt-32 pb-10" id="expertise">
+      <div
+        className="text-center font-semibold text-6xl pt-32 pb-10"
+        id="expertise"
+      >
         My Expertise
       </div>
       <div className="grid grid-cols-3 mx-48">
@@ -521,7 +527,10 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="text-center font-semibold text-6xl pt-32 pb-10" id="experience">
+      <div
+        className="text-center font-semibold text-6xl pt-32 pb-10"
+        id="experience"
+      >
         Professional Experience
       </div>
       <div className="flex flex-col items-center px-96">
@@ -743,9 +752,10 @@ function App() {
             <div
               className="flex flex-col bg-cover bg-center animate-[spin_8s_linear_infinite] justify-center items-center gap-2 text-center overflow-hidden w-48 h-48 rounded-full border-4 border-white"
               style={{
-                background: spotify?.album_art_url
-                  ? "url('" + spotify?.album_art_url + "')"
-                  : "#000",
+                backgroundImage: `url('${spotify?.album_art_url}')`,
+                backgroundColor: "#000",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
               }}
             >
               <div className="text-lg font-semibold">
