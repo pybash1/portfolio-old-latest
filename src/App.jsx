@@ -708,7 +708,7 @@ function App() {
             </div>
           </div>
           <div className="bg-purple-500">
-            {vsc ? (
+            {vsc?.details != "Idling" ? (
               <div className="p-12 text-lg flex flex-col justify-between h-full">
                 <div className="flex flex-row justify-between">
                   <div></div>
@@ -723,6 +723,37 @@ function App() {
                     {" "}
                     - {vsc?.state[0].toUpperCase() + vsc?.state.substr(1)}
                   </div>
+                  <div className="text-sm font-semibold">
+                    {Math.floor(
+                      Math.abs(rn - vsc?.timestamps?.start) / 1000 / 3600
+                    ) %
+                      24 <=
+                    0
+                      ? (Math.floor(
+                          Math.abs(rn - vsc?.timestamps?.start) / 1000 / 60
+                        ) %
+                          24) +
+                        " minutes"
+                      : (Math.floor(
+                          Math.abs(rn - vsc?.timestamps?.start) / 1000 / 3600
+                        ) %
+                          24) +
+                        " hours"}
+                  </div>
+                </div>
+              </div>
+            ) : vsc?.details == "Idling" ? (
+              <div className="p-12 text-lg flex flex-col justify-between h-full">
+                <div className="flex flex-row justify-between">
+                  <div></div>
+                  <img
+                    src={`https://cdn.discordapp.com/app-assets/${vsc?.application_id}/${vsc?.assets?.large_image}.png`}
+                    className="h-20 w-20 border-4 rounded-full"
+                  />
+                </div>
+                <div>
+                  Thinking
+                  <div className="font-semibold"> </div>
                   <div className="text-sm font-semibold">
                     {Math.floor(
                       Math.abs(rn - vsc?.timestamps?.start) / 1000 / 3600
