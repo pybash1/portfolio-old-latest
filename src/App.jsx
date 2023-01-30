@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
   const [spotify, setSpotify] = useState(undefined);
   const [vsc, setVsc] = useState(undefined);
   const [rn, setRn] = useState(undefined);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     setRn(new Date());
@@ -45,6 +46,17 @@ function App() {
 
   return (
     <div className="min-h-screen py-4 bg-black font-['Labil_Grotesk'] text-white flex flex-col gap-4 items-center justify-center text-lg">
+      <a
+        href={
+          [
+            "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "https://discord.gg/FwsGkZAqcZ",
+          ][Math.floor(Math.random() * 2)]
+        }
+        className="fixed bottom-8 right-8 hover:border-2 hover:border-white px-3 py-1 transition-all ease-in-out duration-300 rounded-full text-black hover:text-white"
+      >
+        feeling lucky?
+      </a>
       <div className="flex flex-col gap-3 items-start">
         <div className="flex items-center justify-center">
           hi, i'm{" "}
@@ -90,11 +102,36 @@ function App() {
         <div>
           <ul className="ml-3">
             <li className="flex gap-2">
-              <a href="https://github.com/pybash1" className="font-bold text-green-400">
-                building
+              <a
+                href="https://github.com/pybash1"
+                className="flex items-center font-bold text-green-400"
+              >
+                bu
+                <span
+                  onMouseEnter={() => {
+                    setShow(true);
+                  }}
+                  onMouseLeave={() => {
+                    setShow(false);
+                  }}
+                >
+                  il
+                </span>
+                ding
               </a>{" "}
               meaningful products that solve problems
             </li>
+            {show ? (
+              <li className="flex gap-2">
+                <a
+                  href="https://solo.pybash.xyz"
+                  className="text-green-400 font-bold"
+                >
+                  {lanyard?.data?.kv?.rnname}
+                </a>{" "}
+                - {lanyard?.data?.kv?.rn}
+              </li>
+            ) : null}
             <li className="flex gap-2">
               <div className="font-bold">trying</div> to pass school somehow
             </li>
@@ -104,31 +141,46 @@ function App() {
         <div>
           <ul className="ml-3">
             <li className="flex gap-2">
-              <a href="https://solo.pybash.xyz" className="font-bold text-yellow-400">
+              <a
+                href="https://solo.pybash.xyz"
+                className="font-bold text-yellow-400"
+              >
                 solo(wip)
               </a>{" "}
               - connecting artists with their die-hard fans
             </li>
             <li className="flex gap-2">
-              <a href="https://authdeck.xyz" className="font-bold text-yellow-400">
+              <a
+                href="https://authdeck.xyz"
+                className="font-bold text-yellow-400"
+              >
                 authdeck
               </a>{" "}
               - verify your identity on chain
             </li>
             <li className="flex gap-2">
-              <a href="https://rrpm.pybash.xyz" className="font-bold text-yellow-400">
+              <a
+                href="https://rrpm.pybash.xyz"
+                className="font-bold text-yellow-400"
+              >
                 rrpm
               </a>{" "}
               - dev tool to manage repos and projects better
             </li>
             <li className="flex gap-2">
-              <a href="https://learnist.vercel.app" className="font-bold text-yellow-400">
+              <a
+                href="https://learnist.vercel.app"
+                className="font-bold text-yellow-400"
+              >
                 learnist
               </a>{" "}
               - web app to manage your studies
             </li>
             <li className="flex gap-2">
-              <a href="https://cesta.wiki" className="font-bold text-yellow-400">
+              <a
+                href="https://cesta.wiki"
+                className="font-bold text-yellow-400"
+              >
                 cesta
               </a>{" "}
               - find resources and roadmaps to learn anything
