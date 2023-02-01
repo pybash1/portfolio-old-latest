@@ -11,12 +11,12 @@ function App() {
   useEffect(() => {
     setRn(new Date());
   });
-
+  
   useEffect(() => {
     fetch("https://api.lanyard.rest/v1/users/626461325744275464", {
       method: "GET",
     }).then((res) =>
-      res.json().then((data) => {
+    res.json().then((data) => {
         setLanyard(data);
         if (data.data.spotify) {
           setSpotify(data.data.spotify);
@@ -200,6 +200,15 @@ function App() {
         <div className="text-blue-400 font-bold text-xl">writing</div>
         <div>
           <ul className="ml-3">
+            <li className="flex gap-2">
+              <a
+                href="https://pybash.substack.com/p/6-week-dev-speedrun"
+                className="font-bold text-blue-400 umami--click--writing"
+              >
+                6-week dev speedrun
+              </a>{" "}
+              on substack
+            </li>
             <li className="flex gap-2">
               <a
                 href="https://pybash.substack.com/p/documentation-is-a-love-letter-to"
