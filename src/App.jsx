@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 
 function App() {
@@ -53,7 +53,7 @@ function App() {
             "https://discord.gg/FwsGkZAqcZ",
           ][Math.floor(Math.random() * 2)]
         }
-        className="fixed bottom-8 right-8 hover:border-2 hover:border-white px-3 py-1 transition-all ease-in-out duration-300 rounded-full text-black hover:text-white"
+        className="fixed bottom-8 right-8 hover:border-2 hover:border-white px-3 py-1 transition-all ease-in-out duration-300 rounded-full text-black hover:text-white umami--click--easter-egg"
       >
         feeling lucky?
       </a>
@@ -62,7 +62,7 @@ function App() {
           hi, i'm{" "}
           <a
             href="https://twitter.com/py_bash1"
-            className="ml-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out"
+            className="ml-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out umami--click--username"
           >
             pybash
           </a>
@@ -71,7 +71,7 @@ function App() {
               , rn am vibing to{" "}
               <a
                 href={`https://open.spotify.com/track/${spotify?.track_id}`}
-                className="mx-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out"
+                className="mx-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out umami--click--song"
               >
                 {spotify?.song}
               </a>
@@ -104,7 +104,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://github.com/pybash1"
-                className="flex items-center font-bold text-green-400"
+                className="flex items-center font-bold text-green-400 umami--click--github"
               >
                 bu
                 <span
@@ -114,6 +114,7 @@ function App() {
                   onMouseLeave={() => {
                     setShow(false);
                   }}
+                  className="umami--hover--building-easter-egg"
                 >
                   il
                 </span>
@@ -125,7 +126,7 @@ function App() {
               <li className="flex gap-2">
                 <a
                   href="https://solo.pybash.xyz"
-                  className="text-green-400 font-bold"
+                  className="text-green-400 font-bold umami--click--solo-building"
                 >
                   {lanyard?.data?.kv?.rnname}
                 </a>{" "}
@@ -143,7 +144,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://solo.pybash.xyz"
-                className="font-bold text-yellow-400"
+                className="font-bold text-yellow-400 umami--click--project"
               >
                 solo(wip)
               </a>{" "}
@@ -152,7 +153,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://authdeck.xyz"
-                className="font-bold text-yellow-400"
+                className="font-bold text-yellow-400 umami--click--project"
               >
                 authdeck
               </a>{" "}
@@ -161,7 +162,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://rrpm.pybash.xyz"
-                className="font-bold text-yellow-400"
+                className="font-bold text-yellow-400 umami--click--project"
               >
                 rrpm
               </a>{" "}
@@ -170,7 +171,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://learnist.vercel.app"
-                className="font-bold text-yellow-400"
+                className="font-bold text-yellow-400 umami--click--project"
               >
                 learnist
               </a>{" "}
@@ -179,7 +180,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://cesta.wiki"
-                className="font-bold text-yellow-400"
+                className="font-bold text-yellow-400 umami--click--project"
               >
                 cesta
               </a>{" "}
@@ -202,7 +203,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://pybash.substack.com/p/documentation-is-a-love-letter-to"
-                className="font-bold text-blue-400"
+                className="font-bold text-blue-400 umami--click--writing"
               >
                 documentation is a love letter to your future self
               </a>{" "}
@@ -211,7 +212,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://pybash.substack.com/p/hacktoberfest-and-a-large-codebase"
-                className="font-bold text-blue-400"
+                className="font-bold text-blue-400 umami--click--writing"
               >
                 hacktoberfest and a large codebase
               </a>{" "}
@@ -233,14 +234,14 @@ function App() {
           wanna chat? drop a dm{" "}
           <a
             href="https://twitter.com/py_bash1"
-            className="mx-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out"
+            className="mx-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out umami--click--twitter-dm"
           >
             here
           </a>{" "}
           or message me on{" "}
           <a
             href="https://discord.com/users/626461325744275464"
-            className="ml-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out"
+            className="ml-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out umami--click--discord"
           >
             discord
           </a>
