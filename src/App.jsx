@@ -11,12 +11,12 @@ function App() {
   useEffect(() => {
     setRn(new Date());
   });
-  
+
   useEffect(() => {
     fetch("https://api.lanyard.rest/v1/users/626461325744275464", {
       method: "GET",
     }).then((res) =>
-    res.json().then((data) => {
+      res.json().then((data) => {
         setLanyard(data);
         if (data.data.spotify) {
           setSpotify(data.data.spotify);
@@ -45,7 +45,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen py-4 bg-black font-['Labil_Grotesk'] text-white flex flex-col gap-4 items-center justify-center text-lg">
+    <div className="min-h-screen py-4 bg-black font-['Labil_Grotesk'] text-white px-4 md:px-0 md:flex flex-col gap-4 items-center justify-center text-lg">
       <a
         href={
           [
@@ -53,12 +53,12 @@ function App() {
             "https://discord.gg/FwsGkZAqcZ",
           ][Math.floor(Math.random() * 2)]
         }
-        className="fixed bottom-8 right-8 hover:border-2 hover:border-white px-3 py-1 transition-all ease-in-out duration-300 rounded-full text-black hover:text-white umami--click--easter-egg"
+        className="hidden lg:block fixed bottom-8 right-8 hover:border-2 hover:border-white px-3 py-1 transition-all ease-in-out duration-300 rounded-full text-black hover:text-white umami--click--easter-egg"
       >
         feeling lucky?
       </a>
       <div className="flex flex-col gap-3 items-start">
-        <div className="flex items-center justify-center">
+        <div className="md:flex items-center justify-center">
           hi, i'm{" "}
           <a
             href="https://twitter.com/py_bash1"
@@ -101,7 +101,7 @@ function App() {
         <div className="text-green-400 font-bold text-xl">now</div>
         <div>
           <ul className="ml-3">
-            <li className="flex gap-2">
+            <li className="flex items-start gap-2">
               <a
                 href="https://github.com/pybash1"
                 className="flex items-center font-bold text-green-400 umami--click--github"
@@ -191,7 +191,7 @@ function App() {
         <div className="text-red-400 font-bold text-xl">prev</div>
         <div>
           <ul className="ml-3">
-            <li className="flex gap-2">
+            <li className="md:flex gap-2">
               <div className="font-bold">frontend engineer @ authdeck</div> -
               helped develop the frontend
             </li>
@@ -200,7 +200,16 @@ function App() {
         <div className="text-blue-400 font-bold text-xl">writing</div>
         <div>
           <ul className="ml-3">
-            <li className="flex gap-2">
+            <li className="md:flex gap-2">
+              <a
+                href="https://pybash.substack.com/p/designing-ui-for-the-first-time"
+                className="font-bold text-blue-400 umami--click--writing"
+              >
+                designing ui for the first time
+              </a>{" "}
+              on substack
+            </li>
+            <li className="md:flex gap-2">
               <a
                 href="https://pybash.substack.com/p/6-week-dev-speedrun"
                 className="font-bold text-blue-400 umami--click--writing"
@@ -209,7 +218,7 @@ function App() {
               </a>{" "}
               on substack
             </li>
-            <li className="flex gap-2">
+            <li className="md:flex gap-2">
               <a
                 href="https://pybash.substack.com/p/documentation-is-a-love-letter-to"
                 className="font-bold text-blue-400 umami--click--writing"
@@ -218,7 +227,7 @@ function App() {
               </a>{" "}
               on substack
             </li>
-            <li className="flex gap-2">
+            <li className="md:flex gap-2">
               <a
                 href="https://pybash.substack.com/p/hacktoberfest-and-a-large-codebase"
                 className="font-bold text-blue-400 umami--click--writing"
@@ -239,7 +248,7 @@ function App() {
             </div>
           </ul>
         </div>
-        <div className="flex items-center justify-center">
+        <div className="md:flex items-center justify-center">
           wanna chat? drop a dm{" "}
           <a
             href="https://twitter.com/py_bash1"
