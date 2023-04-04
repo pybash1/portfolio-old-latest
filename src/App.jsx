@@ -62,7 +62,7 @@ function App() {
           hi, i'm{" "}
           <a
             href="https://twitter.com/py_bash1"
-            className="ml-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out umami--click--username"
+            className="ml-1 bg-gray-300 cursor-[url('/cursor.svg'),_pointer] bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out umami--click--username"
           >
             pybash
           </a>
@@ -71,7 +71,7 @@ function App() {
               , rn am vibing to{" "}
               <a
                 href={`https://open.spotify.com/track/${spotify?.track_id}`}
-                className="mx-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out umami--click--song"
+                className="mx-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out cursor-[url('/cursor.svg'),_pointer] umami--click--song"
               >
                 {spotify?.song}
               </a>
@@ -104,7 +104,7 @@ function App() {
             <li className="flex items-start gap-2">
               <a
                 href="https://github.com/pybash1"
-                className="flex items-center font-bold text-green-400 umami--click--github"
+                className="flex items-center font-bold text-green-400 umami--click--github cursor-[url('/cursor.svg'),_pointer]"
               >
                 bu
                 <span
@@ -126,7 +126,7 @@ function App() {
               <li className="flex gap-2">
                 <a
                   href="https://solo.pybash.xyz"
-                  className="text-green-400 font-bold umami--click--solo-building"
+                  className="text-green-400 font-bold umami--click--solo-building cursor-[url('/cursor.svg'),_pointer]"
                 >
                   {lanyard?.data?.kv?.rnname}
                 </a>{" "}
@@ -144,7 +144,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://solo.pybash.xyz"
-                className="font-bold text-yellow-400 umami--click--project"
+                className="font-bold text-yellow-400 umami--click--project cursor-[url('/cursor.svg'),_pointer]"
               >
                 solo(wip)
               </a>{" "}
@@ -153,7 +153,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://authdeck.xyz"
-                className="font-bold text-yellow-400 umami--click--project"
+                className="font-bold text-yellow-400 umami--click--project cursor-[url('/cursor.svg'),_pointer]"
               >
                 authdeck
               </a>{" "}
@@ -162,7 +162,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://rrpm.pybash.xyz"
-                className="font-bold text-yellow-400 umami--click--project"
+                className="font-bold text-yellow-400 umami--click--project cursor-[url('/cursor.svg'),_pointer]"
               >
                 rrpm
               </a>{" "}
@@ -171,7 +171,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://learnist.vercel.app"
-                className="font-bold text-yellow-400 umami--click--project"
+                className="font-bold text-yellow-400 umami--click--project cursor-[url('/cursor.svg'),_pointer]"
               >
                 learnist
               </a>{" "}
@@ -180,7 +180,7 @@ function App() {
             <li className="flex gap-2">
               <a
                 href="https://cesta.wiki"
-                className="font-bold text-yellow-400 umami--click--project"
+                className="font-bold text-yellow-400 umami--click--project cursor-[url('/cursor.svg'),_pointer]"
               >
                 cesta
               </a>{" "}
@@ -203,7 +203,7 @@ function App() {
             <li className="md:flex gap-2">
               <a
                 href="https://pybash.substack.com/p/designing-ui-for-the-first-time"
-                className="font-bold text-blue-400 umami--click--writing"
+                className="font-bold text-blue-400 umami--click--writing cursor-[url('/cursor.svg'),_pointer]"
               >
                 designing ui for the first time
               </a>{" "}
@@ -212,7 +212,7 @@ function App() {
             <li className="md:flex gap-2">
               <a
                 href="https://pybash.substack.com/p/6-week-dev-speedrun"
-                className="font-bold text-blue-400 umami--click--writing"
+                className="font-bold text-blue-400 umami--click--writing cursor-[url('/cursor.svg'),_pointer]"
               >
                 6-week dev speedrun
               </a>{" "}
@@ -221,7 +221,7 @@ function App() {
             <li className="md:flex gap-2">
               <a
                 href="https://pybash.substack.com/p/documentation-is-a-love-letter-to"
-                className="font-bold text-blue-400 umami--click--writing"
+                className="font-bold text-blue-400 umami--click--writing cursor-[url('/cursor.svg'),_pointer]"
               >
                 documentation is a love letter to your future self
               </a>{" "}
@@ -230,7 +230,7 @@ function App() {
             <li className="md:flex gap-2">
               <a
                 href="https://pybash.substack.com/p/hacktoberfest-and-a-large-codebase"
-                className="font-bold text-blue-400 umami--click--writing"
+                className="font-bold text-blue-400 umami--click--writing cursor-[url('/cursor.svg'),_pointer]"
               >
                 hacktoberfest and a large codebase
               </a>{" "}
@@ -240,7 +240,7 @@ function App() {
               sub{" "}
               <a
                 href="https://pybash.substack.com"
-                className="mx-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out"
+                className="mx-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md cursor-[url('/cursor.svg'),_pointer] hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out"
               >
                 here
               </a>{" "}
@@ -252,14 +252,14 @@ function App() {
           wanna chat? drop a dm{" "}
           <a
             href="https://twitter.com/py_bash1"
-            className="mx-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out umami--click--twitter-dm"
+            className="mx-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black cursor-[url('/cursor.svg'),_pointer] duration-300 transition ease-in-out umami--click--twitter-dm"
           >
             here
           </a>{" "}
           or message me on{" "}
           <a
             href="https://discord.com/users/626461325744275464"
-            className="ml-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out umami--click--discord"
+            className="ml-1 bg-gray-300 bg-opacity-40 px-1.5 py-0.5 rounded-md hover:bg-opacity-60 hover:text-black duration-300 transition ease-in-out cursor-[url('/cursor.svg'),_pointer] umami--click--discord"
           >
             discord
           </a>
