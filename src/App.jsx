@@ -6,7 +6,7 @@ function App() {
   const [spotify, setSpotify] = useState(undefined);
   const [vsc, setVsc] = useState(undefined);
   const [rn, setRn] = useState(undefined);
-  const [show, setShow] = useState(false);
+  const [clicks, setClicks] = useState(0);
 
   useEffect(() => {
     setRn(new Date());
@@ -103,26 +103,15 @@ function App() {
           <ul className="ml-3">
             <li className="flex items-start gap-2">
               <a
-                href="https://github.com/pybash1"
+                href={clicks >   1 ? `https://github.com/pybash1` : "#"}
                 className="flex items-center font-bold text-green-400 umami--click--github cursor-[url('/cursor.svg'),_pointer]"
+                onClick={() => setClicks(clicks + 1)}
               >
-                bu
-                <span
-                  onMouseEnter={() => {
-                    setShow(true);
-                  }}
-                  onMouseLeave={() => {
-                    setShow(false);
-                  }}
-                  className="umami--hover--building-easter-egg"
-                >
-                  il
-                </span>
-                ding
+                building
               </a>{" "}
               meaningful products that solve problems
             </li>
-            {show ? (
+            {clicks >= 1 ? (
               <li className="flex gap-2">
                 <a
                   href="https://solo.pybash.xyz"
@@ -141,6 +130,24 @@ function App() {
         <div className="text-yellow-400 font-bold text-xl">projects</div>
         <div>
           <ul className="ml-3">
+            <li className="flex gap-2">
+              <a
+                href="https://elusidate.app"
+                className="font-bold text-yellow-400 umami--click--project cursor-[url('/cursor.svg'),_pointer]"
+              >
+                elusidate
+              </a>{" "}
+              - we turn data to reports in 1 click
+            </li>
+            <li className="flex gap-2">
+              <a
+                href="https://github.com/SoulNinja-dev/supertable"
+                className="font-bold text-yellow-400 umami--click--project cursor-[url('/cursor.svg'),_pointer]"
+              >
+                supertable
+              </a>{" "}
+              - airtable on steroids
+            </li>
             <li className="flex gap-2">
               <a
                 href="https://solo.pybash.xyz"
