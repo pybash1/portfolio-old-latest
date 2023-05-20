@@ -123,6 +123,9 @@ function App() {
               </li>
             ) : null}
             <li className="flex gap-2">
+              <div className="font-bold text-blue-300">frontend engineer @ ???</div> building the frontend at a stealth startup
+            </li>
+            <li className="flex gap-2">
               <div className="font-bold">trying</div> to pass school somehow
             </li>
           </ul>
@@ -135,7 +138,7 @@ function App() {
                 href="https://elusidate.app"
                 className="font-bold text-yellow-400 umami--click--project cursor-[url('/cursor.svg'),_pointer]"
               >
-                elusidate
+                elusidate(cancelled)
               </a>{" "}
               - we turn data to reports in 1 click
             </li>
